@@ -40,7 +40,7 @@ app.use(cors(corsOptions));
 app.use("/api/usuarios", usuarios)
 
 // Ruta para entregar archivos estáticos
-app.use('/api/cdn', express.static('public'));
+app.use('/api/cdn', express.static('public/xss.js'));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
